@@ -20,7 +20,7 @@ from twisted.protocols.policies import TimeoutMixin
 from twisted.python import failure, log
 
 import cowrie.commands
-from cowrie import data
+import cowrie.data as data
 from cowrie.core.config import CowrieConfig
 from cowrie.shell import command, honeypot
 
