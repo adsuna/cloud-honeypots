@@ -56,7 +56,7 @@ RUN python3 -m venv cowrie-env && \
 COPY --chown=${COWRIE_USER}:${COWRIE_GROUP} . ${COWRIE_HOME}/cowrie-git
 
 RUN . cowrie-env/bin/activate && \
-    pip install -e ${COWRIE_HOME}/cowrie-git
+    SETUPTOOLS_SCM_PRETEND_VERSION=1.0 pip install -e ${COWRIE_HOME}/cowrie-git
 
 FROM gcr.io/distroless/python3-debian13:latest AS runtime
 #FROM gcr.io/distroless/python3-debian13:debug AS runtime
