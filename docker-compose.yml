@@ -5,9 +5,7 @@ services:
     ports:
       - "2222:2222"
       - "2223:2223"
-    build:
-      context: ./src/cowrie
-      dockerfile: docker/Dockerfile
+    image: cowrie/cowrie:latest
     volumes:
       - ./data/cowrie/downloads:/home/cowrie/cowrie/dl
       - ./data/cowrie/keys:/home/cowrie/cowrie/etc
@@ -24,7 +22,7 @@ services:
       - "445:445"
       - "1433:1433"
       - "3306:3306"
-    build: ./src/dionaea
+    image: telekomsecurity/dionaea:latest
     volumes:
       - ./data/dionaea:/opt/dionaea/var/dionaea
       - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
@@ -36,7 +34,7 @@ services:
     ports:
       - "502:502"
       - "161:161/udp"
-    build: ./src/conpot
+    image: telekomsecurity/conpot:latest
     volumes:
       - ./data/conpot/log:/var/log/conpot
 
@@ -46,6 +44,6 @@ services:
     ports:
       - "25:25"
       - "587:587"
-    build: ./src/mailoney
+    image: telekomsecurity/mailoney:latest
     volumes:
       - ./data/mailoney/log:/var/log/mailoney
