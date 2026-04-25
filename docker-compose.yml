@@ -22,7 +22,7 @@ services:
       - "445:445"
       - "1433:1433"
       - "3306:3306"
-    image: dinotools/dionaea:latest
+    build: ./src/dionaea
     volumes:
       - ./data/dionaea:/opt/dionaea/var/dionaea
       - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
@@ -34,7 +34,7 @@ services:
     ports:
       - "502:502"
       - "161:161/udp"
-    image: honeynet/conpot:latest
+    build: ./src/conpot
     volumes:
       - ./data/conpot/log:/var/log/conpot
 
@@ -44,6 +44,6 @@ services:
     ports:
       - "25:25"
       - "587:587"
-    image: awick/mailoney:latest
+    build: ./src/mailoney
     volumes:
       - ./data/mailoney/log:/var/log/mailoney
