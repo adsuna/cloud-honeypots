@@ -22,7 +22,7 @@ services:
       - "445:445"
       - "1433:1433"
       - "3306:3306"
-    image: telekomsecurity/dionaea:latest
+    image: dinotools/dionaea:latest
     volumes:
       - ./data/dionaea:/opt/dionaea/var/dionaea
       - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
@@ -34,7 +34,7 @@ services:
     ports:
       - "502:502"
       - "161:161/udp"
-    image: telekomsecurity/conpot:latest
+    image: honeynet/conpot:latest
     volumes:
       - ./data/conpot/log:/var/log/conpot
 
@@ -44,6 +44,6 @@ services:
     ports:
       - "25:25"
       - "587:587"
-    image: telekomsecurity/mailoney:latest
+    image: awick/mailoney:latest
     volumes:
       - ./data/mailoney/log:/var/log/mailoney
