@@ -7,10 +7,8 @@ services:
       - "2223:2223"
     image: cowrie/cowrie:latest
     volumes:
-      - ./data/cowrie/downloads:/home/cowrie/cowrie/dl
-      - ./data/cowrie/keys:/home/cowrie/cowrie/etc
-      - ./data/cowrie/log:/home/cowrie/cowrie/log
-      - ./data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
+      - ./data/cowrie/var:/cowrie/cowrie-git/var
+      - ./data/cowrie/etc:/cowrie/cowrie-git/etc
 
   dionaea:
     container_name: dionaea
