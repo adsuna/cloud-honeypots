@@ -1,0 +1,51 @@
+services:
+  cowrie:
+    container_name: cowrie
+    restart: always
+    ports:
+      - "2222:2222"
+      - "2223:2223"
+    build:
+      context: ./src/cowrie
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./data/cowrie/downloads:/home/cowrie/cowrie/dl
+      - ./data/cowrie/keys:/home/cowrie/cowrie/etc
+      - ./data/cowrie/log:/home/cowrie/cowrie/log
+      - ./data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
+
+  dionaea:
+    container_name: dionaea
+    restart: always
+    ports:
+      - "21:21"
+      - "42:42"
+      - "135:135"
+      - "445:445"
+      - "1433:1433"
+      - "3306:3306"
+    build: ./src/dionaea
+    volumes:
+      - ./data/dionaea:/opt/dionaea/var/dionaea
+      - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
+      - ./data/dionaea/log:/opt/dionaea/var/log
+
+  conpot:
+    container_name: conpot
+    restart: always
+    ports:
+      - "502:502"
+      - "161:161/udp"
+    build: ./src/conpot
+    volumes:
+      - ./data/conpot/log:/var/log/conpot
+
+  mailoney:
+    container_name: mailoney
+    restart: always
+    ports:
+      - "25:25"
+      - "587:587"
+    build: ./src/mailoney
+    volumes:
+      - ./data/mailoney/log:/var/log/mailoney
